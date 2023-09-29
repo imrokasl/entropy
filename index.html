@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Entropy</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+  <h1>Password Entropy Calculator</h1>
+  <label for="password">Password:</label>
+  <input type="password" id="password">
+  <button onclick="calculateEntropy()">Calculate</button>
+  <br>
+  <p>Entropy: <span id="entropy"></span> Bits</p>
+  <button id="showPasswordBtn" onclick="togglePasswordVisibility()">Show Password</button>
+  <div>
+    <p class="maininfo" >An entropy score of less than 25 identifies a poor password, and between 25 and 50 is a weak password. For 50 to
+      75 we have a reasonable password, and between 75 and 100 is a very good password. Over 100 is an excellent
+      password.</p>
+    <p>From <a href="https://discuss.grapheneos.org/d/3873-what-is-current-grapheneoss-security-strength-compared-to-iphone-circa-2016/10" target="_blank" >Grapheneos</a> forum</p>
+    <p>128-bit entropy is the standard value for extreme overkill that's secure far into the future. It doesn't really
+      make sense to generate a random passphrase with more than 128-bit entropy. The amount of entropy is a different
+      thing from the size of the derived key encryption key. The useful reason for security levels above 128-bit is
+      because algorithms get broken in ways that substantially reduce their security. 256-bit cipher which experiences a
+      quite extreme break can still end up providing more than 128-bit security, thus still preserving indefinitely
+      overkill security in practice. This is why using AES256 instead of AES128 makes sense, but generating a 256-bit
+      entropy passphrase / seed phrase which just gets fed into a key derivation algorithm to derive arbitrary length
+      keys really doesn't make sense.</p>
+    <p>Significantly lower than 128-bit security is still considered secure and is just below the standard for extreme
+      overkill that most people have settled on as making sense. Since passphrases go through key derivation adding a
+      substantial work factor, passphrases with 90-bit entropy such as 7 diceword words or 18 lowercase letters/numbers
+      are still highly secure and don't depend on hardware security features to prevent brute forcing. If you really
+      want, you can raise that to 128-bit for extreme overkill but it is substantially more inconvenient and not really
+      giving you real world benefits.</p>
+  </div>
+  <script src="javascript.js"></script>
+</body>
+
+</html>
